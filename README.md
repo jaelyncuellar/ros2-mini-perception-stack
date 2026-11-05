@@ -3,7 +3,7 @@
 A small but complete ROS 2 perception pipeline: a camera publishes
 images, a detection node finds objects in them, and a localization node
 turns the 2D detections into 3D object positions in the map frame using
-TF — visualized in RViz next to ground truth.
+TF - visualized in RViz next to ground truth.
 
 ```
 camera_sim ──/camera/image_raw──▶ detection ──/perception/detections_2d──▶ object_localizer
@@ -27,7 +27,7 @@ one lap of the robot's path (dashed).*
 
 ## What it does
 
-* **`camera_sim_node`** — a stand-in robot + camera. It renders a
+* **`camera_sim_node`** - a stand-in robot + camera. It renders a
   synthetic 3D world (26 traffic cones, crates, and pedestrians around
   an elliptical driving loop) through a pinhole camera model at 10 Hz,
   publishing `sensor_msgs/Image` + `CameraInfo`, driving the loop, and
@@ -35,12 +35,12 @@ one lap of the robot's path (dashed).*
   `map → odom → base_link → camera_link → camera_optical_frame`
   (REP-103 conventions). It also publishes the true object positions as
   markers for comparison — the perception nodes never read them.
-* **`detection_node`** — subscribes to the image topic and publishes
+* **`detection_node`** - subscribes to the image topic and publishes
   `vision_msgs/Detection2DArray`. The detector is nearest-palette color
   segmentation (the same `{box, label, score}` detection format the
   Project 1 tracker consumed, so the projects compose). A learned
   detector node could replace it without touching anything downstream.
-* **`object_localizer_node`** — subscribes to the detections and the
+* **`object_localizer_node`** - subscribes to the detections and the
   `CameraInfo`, estimates each object's 3D position in the optical
   frame with a monocular model (below), looks up
   `map ← camera_optical_frame` in TF at the detection timestamp, and
@@ -64,7 +64,7 @@ the unit tests.
 ## Verified results
 
 **Live ROS graph** (this stack, launched for real; verification node
-subscribed to `/perception/detections_3d` for 30 s —
+subscribed to `/perception/detections_3d` for 30 s -
 `out/metrics_live.json`):
 
 | Metric | Value |
@@ -75,7 +75,7 @@ subscribed to `/perception/detections_3d` for 30 s —
 | Map-frame position RMSE | **0.31 m** |
 | Mean / max error | 0.16 m / 2.00 m |
 
-**Offline evaluation** (same core code, one full 100 s lap, 200 frames —
+**Offline evaluation** (same core code, one full 100 s lap, 200 frames -
 `out/metrics.txt`):
 
 | Metric | Value |
@@ -151,7 +151,7 @@ python3 -m unittest discover -s tests -v
   and it keeps the door open to re-implementing a node in C++ later
   against the same core behaviour.
 * **Standard message types throughout** (`vision_msgs`,
-  `visualization_msgs`, `nav_msgs`, TF) — no custom messages, so other
+  `visualization_msgs`, `nav_msgs`, TF) - no custom messages, so other
   stacks can consume the outputs directly.
 * **The sim is the replaceable part.** On real hardware, a camera
   driver replaces `camera_sim_node` (same two topics) and the robot's
@@ -159,14 +159,14 @@ python3 -m unittest discover -s tests -v
   nodes do not change.
 * **Honest failure accounting.** Border-clipped boxes are scored
   separately, because a truncated box height corrupts the depth
-  estimate (0.40 m vs 0.25 m RMSE) — in a production stack these would
+  estimate (0.40 m vs 0.25 m RMSE) - in a production stack these would
   be filtered or handled by a tracker over time.
 
 ## Limitations
 
 * Synthetic world and a colour-segmentation detector: this project is
   about the ROS 2 system architecture (topics, TF, launch, RViz),
-  message flow, and verified localization accuracy — not about
+  message flow, and verified localization accuracy - not about
   state-of-the-art detection. Project 1 covers learned detection
   (YOLO) and tracking.
 * Monocular depth assumes known class heights and flat ground; errors
