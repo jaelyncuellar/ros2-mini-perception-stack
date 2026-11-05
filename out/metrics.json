@@ -1,0 +1,16 @@
+{
+  "frames": 200,
+  "step_s": 0.5,
+  "visible_object_frames": 840,
+  "detections": 813,
+  "matched": 797,
+  "missed": 43,
+  "false_positives": 16,
+  "position_rmse_clean_m": 0.2485575718799176,
+  "position_mean_error_clean_m": 0.11972271376863548,
+  "position_max_error_clean_m": 1.9858607654650557,
+  "clean_detections_scored": 721,
+  "position_rmse_clipped_m": 0.4014159647937996,
+  "clipped_detections_scored": 76,
+  "depth_mae_m": 0.12070623647745934
+}

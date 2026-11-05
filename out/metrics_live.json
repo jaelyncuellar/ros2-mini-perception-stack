@@ -1,0 +1,15 @@
+{
+  "duration_s": 30.0,
+  "detection3d_messages": 302,
+  "objects_received": 1384,
+  "objects_matched_within_gate": 1336,
+  "objects_unmatched": 48,
+  "per_class_received": {
+    "cone": 618,
+    "crate": 552,
+    "pedestrian": 214
+  },
+  "position_rmse_m": 0.31312631779972006,
+  "position_mean_error_m": 0.16199821657801572,
+  "position_max_error_m": 1.9959115093486897
+}

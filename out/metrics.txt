@@ -1,0 +1,9 @@
+Project 3 - offline perception evaluation (ROS-free core, synthetic world)
+frames: 200 at 0.5 s steps (one full 100 s lap)
+visible object-frames: 840, detections: 813, matched: 797, missed: 43, false positives: 16
+
+map-frame position RMSE (clean boxes):   0.25 m over 721 detections
+map-frame mean error (clean boxes):      0.12 m
+map-frame max error (clean boxes):       1.99 m
+map-frame position RMSE (clipped boxes): 0.40 m over 76 detections
+monocular depth mean abs error:          0.12 m

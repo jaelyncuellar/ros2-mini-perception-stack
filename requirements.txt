@@ -1,0 +1,5 @@
+# Offline core + evaluation only. The ROS nodes need a ROS 2 Jazzy
+# installation (rclpy and the message packages), not pip packages.
+numpy>=1.26
+pillow>=10.0
+matplotlib>=3.6
