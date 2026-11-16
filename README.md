@@ -183,3 +183,11 @@ python3 -m unittest discover -s tests -v
   feed its tracks into the localizer.
 * Add a per-object EKF (Project 2) on the map-frame estimates.
 * Record a rosbag of the stack and replay it as a regression test.
+
+## Portfolio media
+
+The [case study on jaelyncuellar.com](https://jaelyncuellar.com/projects/ros2-perception-stack) uses web versions of the offline evaluation images in `out/`. Those exact files are kept here so the GitHub and portfolio visuals match:
+
+![Top-down evaluation - portfolio version](docs/portfolio/ros2-topdown.webp)
+
+![Sample camera frame - portfolio version](docs/portfolio/ros2-sample.webp)
